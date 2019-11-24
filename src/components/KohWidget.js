@@ -62,7 +62,7 @@ const ImgDiv = styled.div`
   ._swap {
     position: absolute;
     right: 7px;
-    top: 7%
+    top: 7%;
     height: 33px !important;
     cursor: pointer; 
   }
@@ -419,12 +419,12 @@ class KohWidget extends React.PureComponent {
               onChange={this.handleChange('departure')}
               onSelect={this.handleSelect('departure')}
             />
-            {/* <img
+            <img
               className="_swap"
               src={Swap}
               alt="Swap"
               onClick={this.handleSwap}
-            /> */}
+            />
             <Autocomplete
               wrapperStyle={{
                 display: 'flex',
