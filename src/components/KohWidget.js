@@ -18,7 +18,7 @@ import Swap from './assets/swap.png'
 import { amountData } from './data'
 
 const ImgDiv = styled.div`
-  background-image: url(${props => (props.background === 'widget01' ? BackGround : BackGround02)}) !important;
+  background-image: url(${props => (props.background === 'PrimaryWidget' ? BackGround : BackGround02)}) !important;
   background-position: center center !important;
   background-color: grey !important;
   background-size: cover !important;
@@ -186,12 +186,12 @@ class KohWidget extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      departure: props.Departure,
+      departure: props.departure,
       departureOption: [],
-      departureKey: props.DepartureKey,
-      arrival: props.Arrival,
+      departureKey: props.departurekey,
+      arrival: props.arrival,
       arrivalOption: [],
-      arrivalKey: props.ArrivalKey,
+      arrivalKey: props.arrivalkey,
       routematch: {},
       getDate: null,
       focused: null,
@@ -562,18 +562,18 @@ class KohWidget extends React.PureComponent {
 
 KohWidget.PropTypes = {
   background: PropTypes.string,
-  Departure: PropTypes.string,
+  departure: PropTypes.string,
   DepartureKey: PropTypes.string,
-  Arrival: PropTypes.string,
+  arrival: PropTypes.string,
   ArrivalKey: PropTypes.string
 }
 
 KohWidget.defaultProps = {
-  background: 'widget01',
-  Departure: 'Bangkok',
-  DepartureKey: 'bangkok',
-  Arrival: 'Chiangmai',
-  ArrivalKey : 'chiangmai'
+  background: 'PrimaryWidget',
+  departure: 'Bangkok',
+  departurekey: 'bangkok',
+  arrival: 'Chiangmai',
+  arrivalkey : 'chiangmai'
 
 }
 
