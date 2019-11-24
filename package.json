@@ -1,0 +1,55 @@
+{
+  "name": "react-habitat-simple-example-with-webpack-es6",
+  "version": "1.1.0",
+  "description": "Example setup with React Habitat with es6 and webpack",
+  "main": "index.js",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --progress"
+  },
+  "author": "Jenna Salau",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.7.4",
+    "axios": "^0.19.0",
+    "babel-loader": "^8.0.0",
+    "moment": "^2.24.0",
+    "open-browser-webpack4-plugin": "^1.0.0",
+    "prop-types": "^15.5.10",
+    "react": "^16.12.0",
+    "react-autocomplete": "^1.8.1",
+    "react-dates": "^21.5.0",
+    "react-dom": "^16.12.0",
+    "react-habitat": "^0.5.0",
+    "styled-components": "^4.0.3",
+    "webpack": "^4.41.2",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-arrow-functions": "^7.7.4",
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-plugin-styled-components": "^1.10.6",
+    "css-loader": "^3.2.0",
+    "cssimportant-loader": "^0.4.0",
+    "node-sass": "^4.13.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.3.0",
+    "webpack-cli": "^3.3.10"
+  }
+}

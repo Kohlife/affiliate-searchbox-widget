@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+
+hr.featurette-divider{
+	margin-top:80px;
+	margin-bottom:80px;
+}
+
+.featurette-heading{
+	font-size:50px;
+	margin-top:10%;
+	font-weight: normal;
+}
+
+p.lead{
+	margin-bottom: 20px;
+	font-size: 21px;
+	font-weight: 300;
+	line-height: 1.4;
+}
+
+footer{
+	padding:40px 0;
+}
