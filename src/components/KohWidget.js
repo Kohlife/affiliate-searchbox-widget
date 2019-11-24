@@ -9,7 +9,6 @@ import Autocomplete from 'react-autocomplete'
 import axios from 'axios'
 import moment from 'moment'
 
-// import './KohWidget.scss'
 import BackGround from './assets/widget.jpg'
 import BackGround02 from './assets/widget02.png'
 import KohIcon from './assets/kor_icon.png'
@@ -574,7 +573,6 @@ KohWidget.defaultProps = {
   departurekey: 'bangkok',
   arrival: 'Chiangmai',
   arrivalkey : 'chiangmai'
-
 }
 
 export default KohWidget

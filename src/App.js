@@ -3,6 +3,7 @@ import ReactHabitat         from 'react-habitat';
 import Banner               from './components/Banner';
 import Featurette from './components/Featurette';
 import KohWidget from './components/KohWidget';
+import KohWidgetHor from './components/KohWidgetHor';
 
 class App extends ReactHabitat.Bootstrapper {
 
@@ -17,6 +18,7 @@ class App extends ReactHabitat.Bootstrapper {
 		containerBuilder.register(Banner).as('RBanner');
 		containerBuilder.register(Featurette).as('RFeaturette');
 		containerBuilder.register(KohWidget).as('KohWidget');
+		containerBuilder.register(KohWidgetHor).as('KohWidgetHor');
 
 		// Set the DOM container
 		this.setContainer(containerBuilder.build());
