@@ -16,6 +16,8 @@ import VehicleIcon from './assetsHor/homepage-icon.png'
 import VehicleBlack from './assetsHor/homepage-black.png'
 import Swap from './assetsHor/swap.png'
 import Switch from './assetsHor/switch.png'
+import Calendar from './assetsHor/icr_calendar.png'
+import Amount from './assetsHor/icr_travellers.png'
 import { amountData } from './data'
 
 const ImgDiv = styled.div`
@@ -143,13 +145,17 @@ const ImgDiv = styled.div`
     display: inline-block !important;
   }
 
+  .SingleDatePickerInput_calendarIcon {
+    padding: 17px 0px !important;
+    margin: 0 0 0 -5px !important;
+    position: absolute;
+    z-index: ${props => (props.routeFocus ? '-1' : '0')};
+    box-sizing: border-box !important;
+}
+
   .DateInput {
     position: ${props => (props.position ? 'relatice' : 'static')} !important;
     display: inline-block !important;
-  }
-
-  table tr td {
-    padding: 7px 0px !important;
   }
 
   ._button {
@@ -175,6 +181,15 @@ const ImgDiv = styled.div`
     &:hover {
       background: #deb316 !important;
     }
+  }
+
+  ._amount{
+    position: absolute;
+    top: 0;
+    right: 3%;
+    padding: 16px 0;
+    cursor: pointer;
+    z-index: ${props => (props.routeFocus ? '-1' : '0')};
   }
 `
 
@@ -230,7 +245,8 @@ class KohWidgetHor extends Component {
         getDate: null,
         focused: null,
         date: null,
-        amount: '2'
+        amount: '2',
+        routeFocus: null
       }
     }
   
@@ -384,7 +400,8 @@ class KohWidgetHor extends Component {
         getDate,
         date,
         amount,
-        focused
+        focused,
+        routeFocus
       } = this.state
   
       const {background} = this.props
@@ -396,7 +413,7 @@ class KohWidgetHor extends Component {
       // console.log('arrivalKey >>> ', arrivalKey)
       return (
         <Fragment>
-              <ImgDiv position={focused} background={background}>  
+              <ImgDiv position={focused} background={background} routeFocus={routeFocus}>  
                 <div style={{display: 'flex', flexDirection: 'row'}}>
                   <img className="_logo" src={KohIcon} alt={KohIcon} />   
                   <img className="_vehicleIcon" src={background === 'PrimaryWidget' ? VehicleIcon : VehicleBlack} alt="VehicleIcon" />    
@@ -444,7 +461,7 @@ class KohWidgetHor extends Component {
                       fontFamily: 'Roboto',
                       color: '#4a4a4a',
                       padding: '8px 16px',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
                     }}
                   >
                     {item.label}
@@ -454,6 +471,7 @@ class KohWidgetHor extends Component {
               value={departure}
               onChange={this.handleChange('departure')}
               onSelect={this.handleSelect('departure')}
+              onMenuVisibilityChange={isOpen => this.setState({routeFocus : isOpen})}
                       />
             <a className="_content-switch">
                 <img className="_switch-icon" src={Switch} alt="Switch" />
@@ -508,6 +526,7 @@ class KohWidgetHor extends Component {
               value={arrival}
               onChange={this.handleChange('arrival')}
               onSelect={this.handleSelect('arrival')}
+              onMenuVisibilityChange={isOpen => this.setState({routeFocus : isOpen})}
             />                      
                   </div>
                   <div
@@ -531,12 +550,16 @@ class KohWidgetHor extends Component {
                 inputIconPosition="after"
                 numberOfMonths={1}
                 readOnly={true}
+                customInputIcon={
+                  <img src={Calendar} alt="Icon Calendar" height="18"/>
+                }
               />
+              <div style={{position: routeFocus ? 'static' : 'relative'}}>
               <Autocomplete
                 wrapperStyle={{
                   display: 'flex',
                   width: '125px',
-                  marginLeft: '25px'
+                  marginLeft: '25px',                  
                 }}
                 getItemValue={item => item.label}
                 items={amountData}
@@ -583,7 +606,8 @@ class KohWidgetHor extends Component {
                 value={amount}
                 onSelect={val => this.handleAmount(val)}
                       />
-                      
+                <span className="_amount"><img src={Amount} alt="Icon Travellers" height="19" /></span>  
+             </div>
             <button className="_button" onClick={this.handleClick}>
               <p className="_text">Search</p>
             </button>

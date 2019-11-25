@@ -14,6 +14,8 @@ import BackGround02 from './assets/widget02.png'
 import KohIcon from './assets/kor_icon.png'
 import VehicleIcon from './assets/homepage-icon.png'
 import Swap from './assets/swap.png'
+import Calendar from './assets/icr_calendar.png'
+import Amount from './assets/icr_travellers.png'
 import { amountData } from './data'
 
 const ImgDiv = styled.div`
@@ -110,12 +112,19 @@ const ImgDiv = styled.div`
   }
 
   .SingleDatePicker {
-    position: ${props => (props.position ? 'relatice' : 'static')} !important;
+    position: ${props => (props.position ? 'relative' : 'static')} !important;
     display: inline-block !important;
   }
 
+  .SingleDatePickerInput_calendarIcon {
+    padding: 16px 0px !important;
+    margin: 0 0 0 -5px !important;
+    position: ${props => (props.position ? 'relative' : 'static')};
+    box-sizing: border-box !important;
+}
+
   .DateInput {
-    position: ${props => (props.position ? 'relatice' : 'static')} !important;
+    position: ${props => (props.position ? 'relative' : 'static')} !important;
     display: inline-block !important;
   }
 
@@ -140,6 +149,14 @@ const ImgDiv = styled.div`
     &:hover {
       background: #deb316 !important;
     }
+  }
+
+  ._amount{
+    position: absolute;
+    right: 2%;
+    padding: 16px 0;
+    cursor: pointer;
+    z-index: ${props => (props.routeFocus ? '-1' : '0')};
   }
 `
 
@@ -195,7 +212,8 @@ class KohWidget extends React.PureComponent {
       getDate: null,
       focused: null,
       date: null,
-      amount: '2'
+      amount: '2',
+      routeFocus: null
     }
   }
 
@@ -349,7 +367,8 @@ class KohWidget extends React.PureComponent {
       getDate,
       date,
       amount,
-      focused
+      focused,
+      routeFocus
     } = this.state
 
     const {background} = this.props
@@ -357,12 +376,12 @@ class KohWidget extends React.PureComponent {
     const departureList = filterRouteBlank(departureOption, routematch)
     const arrivalList = filterRouteBlank(arrivalOption, routematch)
 
-    // console.log('focused >>> ', focused)
+    console.log('routeFocus >>> ', routeFocus)
     // console.log('arrivalKey >>> ', arrivalKey)
     return (
         <div>
             {/* <h4>KohWidget</h4> */}
-        <ImgDiv position={focused} background={background}>
+        <ImgDiv position={focused} background={background} routeFocus={routeFocus}>
           <img className="_logo" src={KohIcon} alt={KohIcon} />
           <p className="_webText">KOHLIFE.COM</p>
           <p className="_descText">Get cheap tickets across Southeast Asia</p>
@@ -394,6 +413,7 @@ class KohWidget extends React.PureComponent {
                       paddingLeft: '16px',
                       fontWeight: 400
                     }}
+                    
                   />
                 )
               }}
@@ -417,6 +437,7 @@ class KohWidget extends React.PureComponent {
               value={departure}
               onChange={this.handleChange('departure')}
               onSelect={this.handleSelect('departure')}
+              onMenuVisibilityChange={isOpen => this.setState({routeFocus : isOpen})}
             />
             <img
               className="_swap"
@@ -472,6 +493,7 @@ class KohWidget extends React.PureComponent {
               value={arrival}
               onChange={this.handleChange('arrival')}
               onSelect={this.handleSelect('arrival')}
+              onMenuVisibilityChange={isOpen => this.setState({routeFocus : isOpen})}
             />
             <div
               style={{
@@ -494,6 +516,9 @@ class KohWidget extends React.PureComponent {
                 inputIconPosition="after"
                 numberOfMonths={1}
                 readOnly={true}
+                customInputIcon={
+                  <img src={Calendar} alt="Icon Calendar" height="18"/>
+                }
               />
               <Autocomplete
                 wrapperStyle={{
@@ -547,6 +572,7 @@ class KohWidget extends React.PureComponent {
                 value={amount}
                 onSelect={val => this.handleAmount(val)}
               />
+              <span className="_amount"><img src={Amount} alt="Icon Travellers" height="19"/></span>
             </div>
             <button className="_button" onClick={this.handleClick}>
               <p className="_text">Search</p>
