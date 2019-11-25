@@ -148,6 +148,10 @@ const ImgDiv = styled.div`
     display: inline-block !important;
   }
 
+  table tr td {
+    padding: 7px 0px !important;
+  }
+
   ._button {
     width: 50% !important;
     height: 53px !important;
