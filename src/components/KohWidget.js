@@ -121,6 +121,10 @@ const ImgDiv = styled.div`
     margin: 0 0 0 -5px !important;
     position: ${props => (props.position ? 'relative' : 'static')};
     box-sizing: border-box !important;
+
+    ._image{
+      height: 18px !important;
+    }
 }
 
   .DateInput {
@@ -522,7 +526,7 @@ class KohWidget extends React.PureComponent {
                 numberOfMonths={1}
                 readOnly={true}
                 customInputIcon={
-                  <img src={Calendar} alt="Icon Calendar" height="18"/>
+                  <img className="_image" src={Calendar} alt="Icon Calendar" />
                 }
               />
               <Autocomplete

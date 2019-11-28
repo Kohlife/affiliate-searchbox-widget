@@ -151,6 +151,10 @@ const ImgDiv = styled.div`
     position: absolute;
     z-index: ${props => (props.routeFocus ? '-1' : '0')};
     box-sizing: border-box !important;
+
+    ._image{
+      height: 18px !important;
+    }
 }
 
   .DateInput {
@@ -555,7 +559,7 @@ class KohWidgetHor extends Component {
                 numberOfMonths={1}
                 readOnly={true}
                 customInputIcon={
-                  <img src={Calendar} alt="Icon Calendar" height="18"/>
+                  <img className="_image" src={Calendar} alt="Icon Calendar" />
                 }
               />
               <div style={{position: routeFocus ? 'static' : 'relative'}}>
