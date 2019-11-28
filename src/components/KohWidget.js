@@ -298,7 +298,7 @@ class KohWidget extends React.PureComponent {
       }
     })
 
-    // console.log('handleArrival >>> ', Route, data[0].id)
+    //// console.log('handleArrival >>> ', Route, data[0].id)
 
     let Arrival = []
     let checkArrival = ''
