@@ -210,6 +210,7 @@ class KohWidget extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
+      pid: props.pid,
       departure: props.departure,
       departureOption: [],
       departureKey: props.departurekey,
@@ -340,20 +341,20 @@ class KohWidget extends React.PureComponent {
   }
 
   handleClick = () => {
-    const { amount, date, departureKey, arrivalKey } = this.state
+    const { amount, date, departureKey, arrivalKey, pid } = this.state
 
     if (date) {
       console.log('date >>> ', moment(date._d).format('YYYY-MM-DD'))
       const url = `https://www.kohlife.com/transport/${departureKey}/${arrivalKey}/${moment(
         date._d
-      ).format('YYYY-MM-DD')}/${amount}?pid=PGQI24`
+      ).format('YYYY-MM-DD')}/${amount}?pid=${pid}`
 
       // window.location = url
       window.open(url, '_blank')
     } else {
       const url = `https://www.kohlife.com/transport/${departureKey}/${arrivalKey}/${moment()
         .add(1, 'days')
-        .format('YYYY-MM-DD')}/${amount}?pid=PGQI24`
+        .format('YYYY-MM-DD')}/${amount}?pid=${pid}`
 
       window.open(url, '_blank')
     }
@@ -366,6 +367,7 @@ class KohWidget extends React.PureComponent {
 
   render() {
     const {
+      pid,
       departureOption,
       arrivalOption,
       departure,
@@ -607,7 +609,8 @@ KohWidget.defaultProps = {
   departure: 'Bangkok',
   departurekey: 'bangkok',
   arrival: 'Chiangmai',
-  arrivalkey : 'chiangmai'
+  arrivalkey: 'chiangmai',
+  pid: '-'
 }
 
 export default KohWidget
