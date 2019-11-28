@@ -190,6 +190,10 @@ const ImgDiv = styled.div`
     padding: 16px 0;
     cursor: pointer;
     z-index: ${props => (props.routeFocus ? '-1' : '0')};
+
+    ._image{
+      height: 19px !important;
+    }
   }
 `
 
@@ -606,7 +610,7 @@ class KohWidgetHor extends Component {
                 value={amount}
                 onSelect={val => this.handleAmount(val)}
                       />
-                <span className="_amount"><img src={Amount} alt="Icon Travellers" height="19" /></span>  
+                <span className="_amount"><img className="_image" src={Amount} alt="Icon Travellers"/></span>  
              </div>
             <button className="_button" onClick={this.handleClick}>
               <p className="_text">Search</p>
